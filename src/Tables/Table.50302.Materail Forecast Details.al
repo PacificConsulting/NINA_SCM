@@ -1,44 +1,47 @@
-table 50301 "Sales Forecast Details"
+table 50302 "Materials Forecast Details"
 {
     DataClassification = ToBeClassified;
 
     fields
     {
-        field(1; "Forcast Date"; Date)
+
+        field(1; "Work Order No."; Code[20])
         {
             DataClassification = ToBeClassified;
 
         }
-        field(2; "Document No."; Code[20])
-        {
-            DataClassification = ToBeClassified;
-            //Editable = true;
-        }
-        field(3; "Line No."; Integer)
+        field(2; "Job No."; Code[20])
         {
             DataClassification = ToBeClassified;
         }
-        field(4; "Site Name"; Text[30])
+
+        field(3; "Branch Code"; Code[20])
         {
             DataClassification = ToBeClassified;
         }
-        field(5; "GM Code"; Code[20])
+        field(4; "Project Code"; Code[20])
         {
             DataClassification = ToBeClassified;
         }
-        field(6; "PM Code"; Code[20])
+        field(5; "Job Task No."; Code[20])
         {
             DataClassification = ToBeClassified;
         }
-        field(7; "Project Cordinator"; Code[20])
+        field(6; "Work Order Line No."; Integer)
         {
             DataClassification = ToBeClassified;
         }
-        field(8; "Description 2"; Text[50])
+        field(7; "Forcast Date"; Date)
+        {
+            DataClassification = ToBeClassified;
+
+        }
+
+        field(8; "Item No."; Code[20])
         {
             DataClassification = ToBeClassified;
         }
-        field(9; Quantity; Decimal)
+        field(9; Description; Text[50])
         {
             DataClassification = ToBeClassified;
         }
@@ -46,23 +49,37 @@ table 50301 "Sales Forecast Details"
         {
             DataClassification = ToBeClassified;
         }
-        field(11; "Unit Price"; Decimal)
+        field(11; Quantity; Decimal)
         {
             DataClassification = ToBeClassified;
         }
-        field(12; "Final Qty Freeze"; Decimal)
+        field(12; "Quantity Base"; Decimal)
         {
             DataClassification = ToBeClassified;
         }
-        field(13; "New Reset Quantity"; Decimal)
+
+        field(13; "Final Qty Freeze"; Decimal)
         {
             DataClassification = ToBeClassified;
         }
-        field(14; "Sales Forecast Material Adv"; Text[250])
+        field(14; "New Reset Quantity"; Decimal)
         {
             DataClassification = ToBeClassified;
         }
-        field(15; "New Reset Date"; Date)
+
+        field(15; "New Reset Posting Date"; Date)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(16; "Constent of Material"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(17; "Sales Forecast Material Adv"; Text[250])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(18; "New Reset Date"; Date)
         {
             DataClassification = ToBeClassified;
         }
@@ -71,7 +88,7 @@ table 50301 "Sales Forecast Details"
 
     keys
     {
-        key(Key1; "Document No.")
+        key(Key1; "Work Order No.")
         {
             Clustered = true;
         }
