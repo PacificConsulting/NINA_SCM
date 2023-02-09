@@ -1,9 +1,9 @@
-page 50300 "Material Forecast"
+page 50301 "Sales Forecast Details"
 {
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = 50300;
+    SourceTable = "Sales Forecast Details";
 
     layout
     {
@@ -11,28 +11,22 @@ page 50300 "Material Forecast"
         {
             repeater(GroupName)
             {
-                field("Doucment Type"; Rec."Doucment Type")
+                field("Document No."; Rec."Document No.")
                 {
                     ApplicationArea = All;
 
                 }
-                field("Work Order No."; Rec."Work Order No.")
+                field("Forcast Date"; Rec."Forcast Date")
                 {
                     ApplicationArea = All;
                 }
+
+                field("Line No."; Rec."Line No.")
+                {
+                    ApplicationArea = All;
+                }
+
                 field("Site Name"; Rec."Site Name")
-                {
-                    ApplicationArea = All;
-                }
-                field("Sell to customer Name"; Rec."Sell to customer Name")
-                {
-                    ApplicationArea = All;
-                }
-                field("Sell to Customer No."; Rec."Sell to Customer No.")
-                {
-                    ApplicationArea = All;
-                }
-                field("Branch Name"; Rec."Branch Name")
                 {
                     ApplicationArea = All;
                 }
@@ -40,27 +34,42 @@ page 50300 "Material Forecast"
                 {
                     ApplicationArea = All;
                 }
-                field("Sales Person Code"; Rec."Sales Person Code")
+                field("PM Code"; Rec."PM Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Forcast Sales  Value 1"; Rec."Forcast Sales  Value 1")
+                field("Description 2"; Rec."Description 2")
                 {
                     ApplicationArea = All;
                 }
-                field("Forcast Sales  Value 2"; Rec."Forcast Sales  Value 2")
+                field(Quantity; Rec.Quantity)
                 {
                     ApplicationArea = All;
                 }
-                field("Forcast Sales  Value 3"; Rec."Forcast Sales  Value 3")
+                field(UOM; Rec.UOM)
                 {
                     ApplicationArea = All;
                 }
-                field("Total Sales"; Rec."Total Sales")
+                field("Unit Price"; Rec."Unit Price")
                 {
                     ApplicationArea = All;
                 }
-
+                field("Final Qty Freeze"; Rec."Final Qty Freeze")
+                {
+                    ApplicationArea = All;
+                }
+                field("Sales Forecast Material Adv"; Rec."Sales Forecast Material Adv")
+                {
+                    ApplicationArea = All;
+                }
+                field("New Reset Quantity"; Rec."New Reset Quantity")
+                {
+                    ApplicationArea = All;
+                }
+                field("New Reset Date"; Rec."New Reset Date")
+                {
+                    ApplicationArea = All;
+                }
             }
         }
         area(Factboxes)
