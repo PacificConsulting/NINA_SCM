@@ -1,9 +1,9 @@
-page 50301 "Sales Forecast Details"
+page 50304 "Advanced Sales Forecast"
 {
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = "Sales Forecast Details";
+    SourceTable = 50301;
 
     layout
     {
@@ -20,12 +20,10 @@ page 50301 "Sales Forecast Details"
                 {
                     ApplicationArea = All;
                 }
-
                 field("Line No."; Rec."Line No.")
                 {
                     ApplicationArea = All;
                 }
-
                 field("Site Name"; Rec."Site Name")
                 {
                     ApplicationArea = All;
@@ -35,6 +33,10 @@ page 50301 "Sales Forecast Details"
                     ApplicationArea = All;
                 }
                 field("PM Code"; Rec."PM Code")
+                {
+                    ApplicationArea = All;
+                }
+                field("Project Cordinator"; Rec."Project Cordinator")
                 {
                     ApplicationArea = All;
                 }
@@ -58,7 +60,7 @@ page 50301 "Sales Forecast Details"
                 {
                     ApplicationArea = All;
                 }
-                field("Sales Forecast Material Adv"; Rec."Sales Forecast Material Adv")
+                field("New Reset Date"; Rec."New Reset Date")
                 {
                     ApplicationArea = All;
                 }
@@ -66,7 +68,7 @@ page 50301 "Sales Forecast Details"
                 {
                     ApplicationArea = All;
                 }
-                field("New Reset Date"; Rec."New Reset Date")
+                field("Sales Forecast Material Adv"; Rec."Sales Forecast Material Adv")
                 {
                     ApplicationArea = All;
                 }
@@ -82,29 +84,15 @@ page 50301 "Sales Forecast Details"
     {
         area(Processing)
         {
-            action(Approver)
+            action(ActionName)
             {
                 ApplicationArea = All;
-                Image = Approve;
 
                 trigger OnAction();
                 begin
-                    if UserSet.Get(UserId) then;
-                    if NOT CONFIRM('Do you want to send for approval', TRUE) THEN
-                        EXIT;
-                    UserSet.TestField("SCM 1st Approver");
-                    MAtForDetails.Reset();
-                    MAtForDetails.SetRange("Work Order No.", Rec."Document No.");
-                    if not MAtForDetails.FindFirst() then begin
-                        //ForecastMgmnt.CreateMatrialForDetEntry();
-                    end;
+
                 end;
             }
         }
     }
-    var
-        UserSet: Record 91;
-        MAtForDetails: Record 50302;
-        ForecastMgmnt: Codeunit 50300;
-
 }

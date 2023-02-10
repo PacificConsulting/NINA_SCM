@@ -1,4 +1,4 @@
-page 50300 "Material Forecast"
+page 50303 "Advanced Material Forcast"
 {
     PageType = List;
     ApplicationArea = All;
@@ -11,45 +11,28 @@ page 50300 "Material Forecast"
         {
             repeater(GroupName)
             {
-
-                field("Doucment Type"; Rec."Doucment Type")
-                {
-                    ApplicationArea = All;
-
-                }
                 field("Work Order No."; Rec."Work Order No.")
                 {
                     ApplicationArea = All;
-                }
-                field("Site Name"; Rec."Site Name")
-                {
-                    ApplicationArea = All;
-                }
-                field("Sell to customer Name"; Rec."Sell to customer Name")
-                {
-                    ApplicationArea = All;
-                }
-                field("Sell to Customer No."; Rec."Sell to Customer No.")
-                {
-                    ApplicationArea = All;
-                }
-                field("Branch Name"; Rec."Branch Name")
-                {
-                    ApplicationArea = All;
-                }
-                field("GM Code"; Rec."GM Code")
-                {
-                    ApplicationArea = All;
-                }
-                field("Sales Person Code"; Rec."Sales Person Code")
-                {
-                    ApplicationArea = All;
+
                 }
                 field("Forcast Date"; Rec."Forcast Date")
                 {
                     ApplicationArea = All;
                 }
                 field("Tendor No."; Rec."Tendor No.")
+                {
+                    ApplicationArea = All;
+                }
+                field("Line No."; Rec."Line No.")
+                {
+                    ApplicationArea = All;
+                }
+                field(Description; Rec.Description)
+                {
+                    ApplicationArea = All;
+                }
+                field("Description 2"; Rec."Description 2")
                 {
                     ApplicationArea = All;
                 }
@@ -73,6 +56,18 @@ page 50300 "Material Forecast"
                 {
                     ApplicationArea = All;
                 }
+                field("Forcast Quantity 1"; Rec."Forcast Quantity 1")
+                {
+                    ApplicationArea = All;
+                }
+                field("Forcast Quantity 2"; Rec."Forcast Quantity 2")
+                {
+                    ApplicationArea = All;
+                }
+                field("Forcast Quantity 3"; Rec."Forcast Quantity 3")
+                {
+                    ApplicationArea = All;
+                }
                 field("Forcast Sales  Value 1"; Rec."Forcast Sales  Value 1")
                 {
                     ApplicationArea = All;
@@ -85,42 +80,43 @@ page 50300 "Material Forecast"
                 {
                     ApplicationArea = All;
                 }
-                field("Total Sales"; Rec."Total Sales")
+                field("Previous Month Forecast Qty"; Rec."Previous Month Forecast Qty")
                 {
                     ApplicationArea = All;
                 }
-
+                field("Previous Month Forecast Amount"; Rec."Previous Month Forecast Amount")
+                {
+                    ApplicationArea = All;
+                }
+                field("Location Name"; Rec."Location Name")
+                {
+                    ApplicationArea = All;
+                }
+                field("Previous Month Sales Amount"; Rec."Previous Month Sales Amount")
+                {
+                    ApplicationArea = All;
+                }
             }
         }
+        area(Factboxes)
+        {
 
+        }
     }
 
     actions
     {
         area(Processing)
         {
-            action("Send for Approval")
+            action(ActionName)
             {
                 ApplicationArea = All;
-                Image = Approval;
 
                 trigger OnAction();
                 begin
-                    if UserSet.Get(UserId) then;
-                    if NOT CONFIRM('Do you want to send for approval', TRUE) THEN
-                        EXIT;
-                    UserSet.TestField("SCM 1st Approver");
-                    SalesForDet.Reset();
-                    SalesForDet.SetRange("Document No.", Rec."Work Order No.");
-                    if not SalesForDet.FindFirst() then begin
-                        ForecastMgmnt.CreateSalesForecastEntry(Rec);
-                    end;
+
                 end;
             }
         }
     }
-    var
-        UserSet: Record 91;
-        SalesForDet: Record 50301;
-        ForecastMgmnt: Codeunit 50300;
 }

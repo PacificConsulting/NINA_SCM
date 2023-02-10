@@ -40,8 +40,18 @@ table 50302 "Materials Forecast Details"
         field(8; "Item No."; Code[20])
         {
             DataClassification = ToBeClassified;
+            TableRelation = Item."No.";
+
+            trigger OnValidate()
+            var
+                RecItem: Record 27;
+            begin
+                if RecItem.Get("Item No.") then;
+                UOM := RecItem."Base Unit of Measure";
+                Description := RecItem.Description;
+            end;
         }
-        field(9; Description; Text[50])
+        field(9; Description; Text[100])
         {
             DataClassification = ToBeClassified;
         }

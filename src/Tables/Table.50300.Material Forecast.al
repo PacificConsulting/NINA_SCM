@@ -110,8 +110,18 @@ table 50300 "Material Forecast"
         field(25; "Sell to Customer No."; code[20])
         {
             DataClassification = ToBeClassified;
+            TableRelation = Customer."No.";
+
+            trigger OnValidate()
+            var
+                cust: Record 18;
+            begin
+                if cust.get(Rec."Sell to Customer No.") then;
+                rec."Sell to customer Name" := cust.Name;
+            end;
+
         }
-        field(26; "Sell to customer Name"; Text[50])
+        field(26; "Sell to customer Name"; Text[100])
         {
             DataClassification = ToBeClassified;
         }

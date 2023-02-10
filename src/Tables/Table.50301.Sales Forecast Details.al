@@ -34,7 +34,7 @@ table 50301 "Sales Forecast Details"
         {
             DataClassification = ToBeClassified;
         }
-        field(8; "Description 2"; Text[50])
+        field(8; "Description 2"; Text[100])
         {
             DataClassification = ToBeClassified;
         }
