@@ -68,27 +68,43 @@ table 50304 "Indent Line"
         }
         field(13; "Inventory at Haryana"; Decimal)
         {
-            DataClassification = ToBeClassified;
+            // FieldClass = FlowField;
+            // CalcFormula = sum("Item Ledger Entry"."Remaining Quantity" WHERE("Item No." = field("Item No.")));
+            //"Location Code"= FILTER(Haryana)));
+            Editable = false;
+
+
         }
         field(14; "Inventory at HYD"; Decimal)
         {
             DataClassification = ToBeClassified;
+            // FieldClass = FlowField;
+            // CalcFormula = sum("Item Ledger Entry"."Remaining Quantity" WHERE("Item No." = field("Item No.")));
+
         }
         field(15; "Inventory at Pune"; Decimal)
         {
             DataClassification = ToBeClassified;
+            //FieldClass = FlowField;
+            //CalcFormula = sum("Item Ledger Entry"."Remaining Quantity" WHERE("Item No." = field("Item No.")));
         }
         field(16; "Inventory at Uran"; Decimal)
         {
             DataClassification = ToBeClassified;
+            // FieldClass = FlowField;
+            // CalcFormula = sum("Item Ledger Entry"."Remaining Quantity" WHERE("Item No." = field("Item No.")));
         }
         field(17; "Inventory at Banglore"; Decimal)
         {
             DataClassification = ToBeClassified;
+            // FieldClass = FlowField;
+            // CalcFormula = sum("Item Ledger Entry"."Remaining Quantity" WHERE("Item No." = field("Item No.")));
         }
         field(18; "Total Inventroy"; Decimal)
         {
             DataClassification = ToBeClassified;
+            // FieldClass = FlowField;
+            // CalcFormula = sum("Item Ledger Entry"."Remaining Quantity" WHERE("Item No." = field("Item No.")));
         }
         field(19; "New Indent Qty 1"; Decimal)
         {
