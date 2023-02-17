@@ -81,9 +81,53 @@ tableextension 50302 "Transfer Header_SCM" extends "Transfer Header"
         {
             DataClassification = ToBeClassified;
         }
+        field(50313; "Transfer Order Type"; Enum "To Type")
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50314; "Master Transfer Order No."; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50315; "Shipment Branch Name"; Code[50])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50316; "Receipt Branch Name"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50317; "Document Receive"; enum "Document Receive")
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50318; "Consignee Contact Name and No."; Text[250])
+        {
+            DataClassification = ToBeClassified;
+        }
+
     }
+
+    procedure AssistEditSitetosite(OldTransHeader: Record "Transfer Header"): Boolean
+    begin
+        with TransHeader do begin
+            TransHeader := Rec;
+            InvtSetup.Get();
+            //            TestNoSeries();
+            InvtSetup.TestField("TO Site to site");
+            //if NoSeriesMgt.SelectSeries(GetNoSeriesCode(), OldTransHeader."No. Series", "No. Series") then begin
+            if NoSeriesMgt.SelectSeries(InvtSetup."TO Site to site", OldTransHeader."No. Series", "No. Series") then begin
+                NoSeriesMgt.SetSeries("No.");
+                Rec := TransHeader;
+                exit(true);
+            end;
+        end;
+    end;
 
     var
         recVend: record 23;
+        TransHeader: Record "Transfer Header";
+        InvtSetup: Record "Inventory Setup";
+        NoSeriesMgt: Codeunit NoSeriesManagement;
 
 }

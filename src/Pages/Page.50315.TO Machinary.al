@@ -1,6 +1,6 @@
-page 50310 "TO Store Issue"
+page 50315 "TO Machinary"
 {
-    Caption = 'TO Store Issue';
+    Caption = 'TO Machinary';
     PageType = Document;
     RefreshOnActivate = true;
     SourceTable = "Transfer Header";
@@ -115,7 +115,7 @@ page 50310 "TO Store Issue"
                     ToolTip = 'Specifies whether the transfer order is open or has been released for warehouse handling.';
                 }
             }
-            part(TransferLines; "TO Store Issue Subform")
+            part(TransferLines; "TO Machinary Subform")
             {
                 ApplicationArea = Location;
                 Editable = IsTransferLinesEditable;

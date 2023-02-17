@@ -1,6 +1,6 @@
-page 50310 "TO Store Issue"
+page 50312 "To Site to Site"
 {
-    Caption = 'TO Store Issue';
+    Caption = 'To Site to Site';
     PageType = Document;
     RefreshOnActivate = true;
     SourceTable = "Transfer Header";
@@ -21,7 +21,8 @@ page 50310 "TO Store Issue"
 
                     trigger OnAssistEdit()
                     begin
-                        if rec.AssistEdit(xRec) then
+                        //if rec.AssistEdit(xRec) then
+                        if rec.AssistEditSitetosite(xRec) then
                             CurrPage.Update();
                     end;
                 }
@@ -115,7 +116,7 @@ page 50310 "TO Store Issue"
                     ToolTip = 'Specifies whether the transfer order is open or has been released for warehouse handling.';
                 }
             }
-            part(TransferLines; "TO Store Issue Subform")
+            part(TransferLines; "To Site to Site Subform")
             {
                 ApplicationArea = Location;
                 Editable = IsTransferLinesEditable;
