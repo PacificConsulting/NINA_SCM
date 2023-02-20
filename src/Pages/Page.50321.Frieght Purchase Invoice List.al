@@ -662,6 +662,7 @@ page 50321 "Freight Purchase Invoice List"
 #if not CLEAN21
         // Contextual Power BI FactBox: send data to filter the report in the FactBox: (SourceTableFildToCompare,QueryName/FieldName)
         CurrPage."Power BI Report FactBox".PAGE.SetCurrentListSelection(rec."No.", false, PowerBIVisible);
+        // CurrPage.PowerBIEmbeddedReportPart.Page.SetCurrentListSelection(Rec."No.",false,PowerBIVisible);
 #endif
         CurrPage.PowerBIEmbeddedReportPart.PAGE.SetCurrentListSelection(rec."No.");
     end;

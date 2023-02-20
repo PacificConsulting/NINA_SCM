@@ -1,6 +1,6 @@
 table 50303 "Indent Header"
 {
-    DataClassification = ToBeClassified;
+    //DataClassification = ToBeClassified;
 
     fields
     {
@@ -110,6 +110,55 @@ table 50303 "Indent Header"
         {
             DataClassification = ToBeClassified;
         }
+        field(22; "Pending Since"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(23; "PM Code"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(24; "GM Code"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(25; "Project Coordinator"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(26; "Work Order No."; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(27; "WO Status"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(29; "WO Not-Active/Closer Date"; Date)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'WO Status Not-Active/Closer Date';
+        }
+        field(30; "WO Status Active Date"; Date)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(31; "Machine Used Start Date"; Date)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(32; "Machine Used End Date"; Date)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(33; "Forecast Material"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(34; "Qty to be Added on BOQ"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
 
     }
 
@@ -127,21 +176,6 @@ table 50303 "Indent Header"
     trigger OnInsert()
     begin
         "User ID" := UserId;
-    end;
-
-    trigger OnModify()
-    begin
-
-    end;
-
-    trigger OnDelete()
-    begin
-
-    end;
-
-    trigger OnRename()
-    begin
-
     end;
 
 }

@@ -1,10 +1,9 @@
-page 50308 "Purchase Indent Subform"
+page 50332 "PNM Indent Subform"
 {
     PageType = ListPart;
     // ApplicationArea = All;
     // UsageCategory = Lists;
     SourceTable = 50304;
-
 
     layout
     {
@@ -12,16 +11,15 @@ page 50308 "Purchase Indent Subform"
         {
             repeater(GroupName)
             {
+                field("Indent No."; Rec."Indent No.")
+                {
+                    ApplicationArea = All;
+                }
                 field("Line No"; Rec."Line No")
                 {
                     ApplicationArea = All;
-
                 }
                 field("Item No."; Rec."Item No.")
-                {
-                    ApplicationArea = All;
-                }
-                field("Item Category"; Rec."Item Category")
                 {
                     ApplicationArea = All;
                 }
@@ -29,23 +27,15 @@ page 50308 "Purchase Indent Subform"
                 {
                     ApplicationArea = All;
                 }
+                field("Item Category"; Rec."Item Category")
+                {
+                    ApplicationArea = All;
+                }
+                field(Description; Rec.Description)
+                {
+                    ApplicationArea = All;
+                }
                 field("Indent Quantity"; Rec."Indent Quantity")
-                {
-                    ApplicationArea = All;
-                }
-                field("Inedent UOM"; Rec."Inedent UOM")
-                {
-                    ApplicationArea = All;
-                }
-                field("New Indent Qty 1"; Rec."New Indent Qty 1")
-                {
-                    ApplicationArea = All;
-                }
-                field("New Indent Qty 2"; Rec."New Indent Qty 2")
-                {
-                    ApplicationArea = All;
-                }
-                field("Location Code"; Rec."Location Code")
                 {
                     ApplicationArea = All;
                 }

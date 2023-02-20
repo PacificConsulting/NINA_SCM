@@ -1,13 +1,32 @@
 table 50300 "Material Forecast"
 {
-    DataClassification = ToBeClassified;
+    //DataClassification = ToBeClassified;
 
     fields
     {
         field(1; "Work Order No."; Code[20])
         {
             DataClassification = ToBeClassified;
+            TableRelation = "Sales Header" where("Document Type" = filter("Blanket Order"));
+            trigger OnValidate()
+            var
+                JobPlanningLine: Record 1003;
+            begin
+                JobPlanningLine.Reset();
+                JobPlanningLine.SetRange("Document No.", rec."Work Order No.");
+                if JobPlanningLine.FindFirst() then begin
+                    //rec.validate("Tendor No.",JobPlanningLine.tendor);
+                    rec.validate("Line No.", JobPlanningLine."Line No.");
+                    rec.validate(Description, JobPlanningLine.Description);
+                    rec.validate("Description 2", JobPlanningLine."Description 2");
+                    rec.validate("Work Order Quantity", JobPlanningLine.Quantity);
+                    rec.validate("Balance Work ord Quantity", JobPlanningLine.Quantity);
+                    rec.validate("Unit of Measure", JobPlanningLine."Unit of Measure Code");
+                    rec.Validate("Unit Price excl. vat", JobPlanningLine."Unit Price (LCY)");
+                    rec.Validate("Line excl.vat", JobPlanningLine."Line Amount (LCY)");
+                end
 
+            end;
         }
         field(2; "Forcast Date"; Date)
         {

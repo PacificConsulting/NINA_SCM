@@ -110,18 +110,18 @@ tableextension 50302 "Transfer Header_SCM" extends "Transfer Header"
 
     procedure AssistEditSitetosite(OldTransHeader: Record "Transfer Header"): Boolean
     begin
-        with TransHeader do begin
-            TransHeader := Rec;
-            InvtSetup.Get();
-            //            TestNoSeries();
-            InvtSetup.TestField("TO Site to site");
-            //if NoSeriesMgt.SelectSeries(GetNoSeriesCode(), OldTransHeader."No. Series", "No. Series") then begin
-            if NoSeriesMgt.SelectSeries(InvtSetup."TO Site to site", OldTransHeader."No. Series", "No. Series") then begin
-                NoSeriesMgt.SetSeries("No.");
-                Rec := TransHeader;
-                exit(true);
-            end;
+        // with TransHeader do begin
+        //     TransHeader := Rec;
+        InvtSetup.Get();
+        //            TestNoSeries();
+        InvtSetup.TestField("TO Site to site");
+        //if NoSeriesMgt.SelectSeries(GetNoSeriesCode(), OldTransHeader."No. Series", "No. Series") then begin
+        if NoSeriesMgt.SelectSeries(InvtSetup."TO Site to site", OldTransHeader."No. Series", "No. Series") then begin
+            NoSeriesMgt.SetSeries("No.");
+            Rec := TransHeader;
+            exit(true);
         end;
+        //end;
     end;
 
     var

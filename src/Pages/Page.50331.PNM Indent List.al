@@ -1,10 +1,10 @@
-page 50307 "Purchase Indent List"
+page 50331 "PNM Indent List"
 {
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = 50303;
-    CardPageId = 50306;
+    CardPageId = 50330;
 
     layout
     {
@@ -29,10 +29,6 @@ page 50307 "Purchase Indent List"
                     ApplicationArea = All;
                 }
             }
-        }
-        area(Factboxes)
-        {
-
         }
     }
 

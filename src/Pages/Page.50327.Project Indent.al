@@ -1,13 +1,9 @@
-page 50306 "Purchase Indent"
+page 50327 "Project Indent"
 {
     PageType = Card;
     // ApplicationArea = All;
     // UsageCategory = Administration;
     SourceTable = 50303;
-    DelayedInsert = true;
-    MultipleNewLines = true;
-    SaveValues = true;
-    AutoSplitKey = true;
 
     layout
     {
@@ -18,36 +14,39 @@ page 50306 "Purchase Indent"
                 field("Indent No."; Rec."Indent No.")
                 {
                     ApplicationArea = All;
-
                 }
-                field("Indent Type"; Rec."Indent Type")
+                field("Location Name"; Rec."Location Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Location Code"; Rec."Location Code")
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = All;
                 }
-                field("Indent From Forecast Month"; Rec."Indent From Forecast Month")
+                field("User ID"; Rec."User ID")
                 {
                     ApplicationArea = All;
                 }
-                field("Store Issue"; Rec."Store Issue")
+                field("Approval 1 Date"; Rec."Approval 1 Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Store Issue Remarks"; Rec."Store Issue Remarks")
+                field("Approval 1 User ID"; Rec."Approval 1 User ID")
                 {
                     ApplicationArea = All;
                 }
-                field("Transfer Issue"; Rec."Transfer Issue")
+                field("Approval 2 Date"; Rec."Approval 2 Date")
+                {
+                    ApplicationArea = All;
+                }
+                field("Approval 2 User ID"; Rec."Approval 2 User ID")
                 {
                     ApplicationArea = All;
                 }
             }
-            part("Indent Line"; 50308)
+            part("indent line"; "Project Indent Subform")
             {
-                Caption = 'Indent Line"';
+                Caption = 'Priject Indent Line';
                 SubPageLink = "Indent No." = field("Indent No.");
             }
         }
