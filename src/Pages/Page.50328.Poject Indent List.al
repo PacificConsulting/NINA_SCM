@@ -5,6 +5,7 @@ page 50328 "Project Indent List"
     UsageCategory = Lists;
     SourceTable = 50303;
     CardPageId = 50327;
+    SourceTableView = where("Department Type" = filter(Project));
 
     layout
     {

@@ -159,6 +159,10 @@ table 50303 "Indent Header"
         {
             DataClassification = ToBeClassified;
         }
+        field(35; "Department Type"; Enum "Department Type")
+        {
+            DataClassification = ToBeClassified;
+        }
 
     }
 

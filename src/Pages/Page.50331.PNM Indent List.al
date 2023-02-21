@@ -5,6 +5,7 @@ page 50331 "PNM Indent List"
     UsageCategory = Lists;
     SourceTable = 50303;
     CardPageId = 50330;
+    SourceTableView = where("Department Type" = filter(PNM));
 
     layout
     {

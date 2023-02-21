@@ -5,6 +5,7 @@ page 50307 "SCM Purchase Indent List"
     UsageCategory = Lists;
     SourceTable = 50303;
     CardPageId = 50306;
+    SourceTableView = where("Department Type" = filter(SCM));
 
     layout
     {

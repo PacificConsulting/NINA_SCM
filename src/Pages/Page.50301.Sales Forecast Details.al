@@ -92,7 +92,7 @@ page 50301 "Sales Forecast Details"
                     if UserSet.Get(UserId) then;
                     if NOT CONFIRM('Do you want to send for approval', TRUE) THEN
                         EXIT;
-                    UserSet.TestField("SCM 1st Approver");
+                    UserSet.TestField("Forecast 1st Approver");
                     MAtForDetails.Reset();
                     MAtForDetails.SetRange("Work Order No.", Rec."Document No.");
                     if not MAtForDetails.FindFirst() then begin

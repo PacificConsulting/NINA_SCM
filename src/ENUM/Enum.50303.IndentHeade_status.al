@@ -6,11 +6,19 @@ enum 50303 "Indent status"
     {
         Caption = 'Open';
     }
-    value(1; Approved)
+    value(1; "Pending For Approval")
+    {
+        Caption = 'Pending For Approval';
+    }
+    value(2; "Final Pending For Approval")
+    {
+        Caption = 'Final Pending For Approval';
+    }
+    value(3; Approved)
     {
         Caption = 'Approved';
     }
-    value(2; Reject)
+    value(4; Reject)
     {
         Caption = 'Reject';
     }

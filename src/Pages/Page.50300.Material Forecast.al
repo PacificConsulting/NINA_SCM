@@ -109,7 +109,7 @@ page 50300 "Material Forecast"
                     if UserSet.Get(UserId) then;
                     if NOT CONFIRM('Do you want to send for approval', TRUE) THEN
                         EXIT;
-                    UserSet.TestField("SCM 1st Approver");
+                    UserSet.TestField("Forecast 1st Approver");
                     SalesForDet.Reset();
                     SalesForDet.SetRange("Document No.", Rec."Work Order No.");
                     if not SalesForDet.FindFirst() then begin
