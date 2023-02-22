@@ -163,7 +163,34 @@ table 50303 "Indent Header"
         {
             DataClassification = ToBeClassified;
         }
-
+        field(36; "Approved Forecast Material"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(37; "Approved Forecast Date"; Date)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Approved Forecast Material Date';
+        }
+        field(38; "Approved Forecast User ID"; Code[50])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Approved Forecast Material User ID';
+        }
+        field(39; "Approved Date"; Date)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(40; "Approved User ID"; Code[50])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Approved Forecast Material User ID';
+        }
+        field(41; "No. Series"; code[20])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = "No. Series".Code;
+        }
     }
 
     keys
@@ -176,10 +203,49 @@ table 50303 "Indent Header"
 
     var
         myInt: Integer;
+        PurchSetup: Record "Purchases & Payables Setup";
+        NoSeriesMgt: Codeunit NoSeriesManagement;
 
     trigger OnInsert()
     begin
         "User ID" := UserId;
     end;
+
+    procedure TestNoSeries()
+    begin
+        CASE rec."Department Type" OF
+            rec."Department Type"::SCM:
+                PurchSetup.TESTFIELD("SCM Indent No.");
+            rec."Department Type"::Project:
+                PurchSetup.TESTFIELD("Project Indent No.");
+            rec."Department Type"::PNM:
+                PurchSetup.TESTFIELD("PNM Indent No.");
+        end;
+    END;
+
+    procedure GetNoSeriesCode(): Code[10]
+    begin
+        CASE rec."Department Type" OF
+            rec."Department Type"::SCM:
+                EXIT(PurchSetup."SCM Indent No.");
+            rec."Department Type"::Project:
+                EXIT(PurchSetup."Project Indent No.");
+            rec."Department Type"::PNM:
+                EXIT(PurchSetup."PNM Indent No.");
+        end;
+    end;
+
+    procedure AssistEdit(OldIndentHeader: Record "Indent Header"): Boolean
+    begin
+        TestNoSeries;
+        IF NoSeriesMgt.SelectSeries(GetNoSeriesCode, OldIndentHeader."No. Series", rec."No. Series") THEN BEGIN
+            PurchSetup.GET;
+            TestNoSeries;
+            NoSeriesMgt.SetSeries(rec."Indent No.");
+            EXIT(TRUE);
+        END;
+    end;
+
+
 
 }

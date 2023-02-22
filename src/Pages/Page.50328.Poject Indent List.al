@@ -29,6 +29,14 @@ page 50328 "Project Indent List"
                 {
                     ApplicationArea = All;
                 }
+                field("Department Type"; Rec."Department Type")
+                {
+                    ApplicationArea = All;
+                }
+                field("Type of Indent"; Rec."Type of Indent")
+                {
+                    ApplicationArea = All;
+                }
             }
         }
     }

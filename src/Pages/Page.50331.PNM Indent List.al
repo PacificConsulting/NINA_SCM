@@ -25,6 +25,14 @@ page 50331 "PNM Indent List"
                 {
                     ApplicationArea = All;
                 }
+                field("Department Type"; Rec."Department Type")
+                {
+                    ApplicationArea = All;
+                }
+                field("Type of Indent"; Rec."Type of Indent")
+                {
+                    ApplicationArea = All;
+                }
                 field("Indent From Forecast Month"; Rec."Indent From Forecast Month")
                 {
                     ApplicationArea = All;
