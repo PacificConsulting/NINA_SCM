@@ -1,14 +1,9 @@
-page 50308 "SCM Purchase Indent Subform"
+page 50333 "Indent Line List"
 {
-    PageType = ListPart;
-    // ApplicationArea = All;
-    // UsageCategory = Lists;
+    PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Lists;
     SourceTable = 50304;
-    AutoSplitKey = true;
-    Caption = 'Lines';
-    DelayedInsert = true;
-    LinksAllowed = false;
-    MultipleNewLines = true;
 
     layout
     {
@@ -94,28 +89,62 @@ page 50308 "SCM Purchase Indent Subform"
                 {
                     ApplicationArea = All;
                 }
-
-            }
-        }
-
-    }
-
-    actions
-    {
-        area(Processing)
-        {
-            action("Co&mments")
-            {
-                ApplicationArea = Comments;
-                Caption = 'Co&mments';
-                Image = ViewComments;
-                ToolTip = 'View or add comments for the record.';
-
-                trigger OnAction()
-                begin
-                    rec.ShowLineComments();
-                end;
             }
         }
     }
+
+    trigger OnQueryClosePage(CloseAction: Action): Boolean;
+    begin
+        IF CloseAction = ACTION::LookupOK THEN
+            LookupOKOnPush;
+    end;
+
+    local procedure LookupOKOnPush();
+    begin
+        //IF (Rec.Quantity - Rec."PO Qty") <> 0 THEN BEGIN
+        IF (Rec."Indent Quantity") <> 0 THEN BEGIN
+            CurrPage.SETSELECTIONFILTER(Rec);
+            SetPurchHeaderIndent(PurchHeader);
+            CreateIndentLines(Rec);
+        END ELSE BEGIN
+            ERROR('%1', 'Please select the records having Outstanding Qty');
+        END;
+    end;
+
+    procedure SetPurchHeaderIndent(var PurchHeader2: Record 38);
+    begin
+        PurchHeader.RESET;
+        PurchHeader.SETRANGE(PurchHeader."Document Type", PurchHeader2."Document Type");
+        PurchHeader.SETRANGE(PurchHeader."No.", PurchHeader2."No.");
+        PurchHeader.SETRANGE(PurchHeader."Location Code", PurchHeader2."Location Code");
+        IF PurchHeader.FINDFIRST THEN;
+    end;
+
+    procedure CreateIndentLines(var PurchIndentLine2: Record 50304);
+    var
+        TransferLine: Boolean;
+        DimMgt: Codeunit 408;
+    begin
+        WITH PurchIndentLine2 DO BEGIN
+            SETFILTER("Indent Quantity", '<>0');
+            IF FIND('-') THEN BEGIN
+                purchline.LOCKTABLE;
+                purchline.SETRANGE("Document Type", PurchHeader."Document Type");
+                purchline.SETRANGE("Document No.", PurchHeader."No.");
+                purchline."Document Type" := PurchHeader."Document Type";
+                purchline."Document No." := PurchHeader."No.";
+                REPEAT
+                    PurcIndnettLine := PurchIndentLine2;
+                    PurcIndnettLine.InsertPurchLineFromIndentLine(purchline);
+                // DimMgt.MoveTempFromDimToTempToDim(TempFromLineDim,TempToLineDim);
+                UNTIL NEXT = 0;
+                //  DimMgt.TransferTempToDimToDocDim(TempToLineDim);
+            END;
+        END;
+    end;
+
+    var
+        purchline: Record 39;
+        PurchHeader: record 38;
+        PurcIndnettLine: Record 50304;
 }

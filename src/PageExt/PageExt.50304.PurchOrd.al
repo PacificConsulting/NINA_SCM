@@ -2,6 +2,14 @@ pageextension 50304 "Purchase order Indent" extends "Purchase Order"
 {
     layout
     {
+        addlast(General)
+        {
+            field("EX-WORKS"; Rec."EX-WORKS")
+            {
+                ApplicationArea = All;
+            }
+
+        }
 
     }
     actions

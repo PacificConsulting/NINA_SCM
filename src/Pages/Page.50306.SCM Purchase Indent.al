@@ -268,6 +268,17 @@ page 50306 "SCM Purchase Indent"
                     CurrPage.Close();
                 end;
             }
+            action("Co&mments")
+            {
+                ApplicationArea = Comments;
+                Caption = 'Co&mments';
+                Image = ViewComments;
+                RunObject = Page "Indent Comment List";
+                RunPageLink = "Department Type" = FIELD("Department Type"),
+                                  "No." = FIELD("Indent No."),
+                                  "Document Line No." = CONST(0);
+                ToolTip = 'View or add comments for the record.';
+            }
         }
     }
 
@@ -308,5 +319,6 @@ page 50306 "SCM Purchase Indent"
     begin
         rec."Department Type" := rec."Department Type"::PNM;
     end;
+
 
 }
